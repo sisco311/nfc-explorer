@@ -112,7 +112,7 @@ public class MainActivity extends Activity {
         Log.d("onNewIntent", "Discovered tag with intent " + intent);
 
         Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-        String tagId = Utils.bytesToHex(tag.getId());
+        String tagId = Utils.bytesToDec(tag.getId());
         TagWrapper tagWrapper = new TagWrapper(tagId);
 
         ArrayList<String> misc = new ArrayList<String>();
@@ -188,6 +188,7 @@ public class MainActivity extends Activity {
 
         currentTagView.setText("Tag " + tagWrapper.getId() +
                 " (" + (currentTagIndex+1) + "/" + tags.size() + ")");
+
     }
 
     private final List<String> getTagInfo(final Tag tag, final String tech) {

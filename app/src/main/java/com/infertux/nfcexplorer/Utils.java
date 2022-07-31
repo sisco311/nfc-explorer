@@ -25,6 +25,23 @@ final class Utils {
         return "0x" + new String(hexChars);
     }
 
+    public final static String bytesToDec(byte[] bytes) {
+        if (bytes == null) return null;
+
+        StringBuilder str = new StringBuilder();
+        for (int j = bytes.length - 1; j >= 0; --j) {
+            int i = bytes[j] & 0xFF;
+            if (i < 10)
+                str.append("0");
+            if (i < 100)
+                str.append("0");
+            if (j == 0)
+                str.append(i);
+            else
+                str.append(i + " ");
+        }
+        return str.toString();
+    }
     public final static String bytesToHexAndString(byte[] bytes) {
         if (bytes == null) return null;
 
